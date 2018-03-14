@@ -29,7 +29,8 @@
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                <input id="customerType" name="customerType" placeholder="Customer Type" class="form-control" required="true" ng-model="customer.customerType" value="" type="text" readonly>
+                                <!--<input id="customerType" name="customerType" placeholder="Customer Type" class="form-control" required="true" ng-model="customer.customerType" value="" type="text" readonly>-->
+                                <select class="form-control" id="customerType" name="customerType" ng-options="option as option for option in customerTypeOptions" disabled ng-model="customer.customerType"></select>
                             </div>
                         </div>
                     </div>
@@ -171,6 +172,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="align-button">
+                        <button class="btn btn-primary pull-right" ng-click="patchCustomer()">Patch</button>
+                    </div>
                 </fieldset>
             </form>
         </td>
@@ -178,6 +182,59 @@
     </tbody>
 </table>
 
+
+    <h4>Customer engagements</h4>
+    <table ng-repeat="engagement in customer.customerEngagements" class="table table-striped">
+        <tbody>
+        <tr>
+            <td colspan="1">
+                <form class="well form-horizontal">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Engagement Type</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+                                    <select class="form-control" id="engagementType" name="engagementType" ng-options="option as option for option in engagementOptions" disabled ng-model="engagement.engagementType"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Friendly name</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+                                    <input id="friendlyName" name="friendlyName" placeholder="First Name" ng-model="engagement.friendlyName" class="form-control" required="true" value="" type="text" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </td>
+            <td colspan="1">
+                <form class="well form-horizontal">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Account Number</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+                                    <input id="accountNumber" name="accountNumber" placeholder="First Name" ng-model="engagement.accountNumber" class="form-control" required="true" value="" type="text" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Is corporate?</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <label class="radio-inline"><input type="radio" name="corporate" ng-model="engagement.corporate" ng-value="true" disabled>Yes</label>
+                                    <label class="radio-inline"><input type="radio" name="corporate" ng-model="engagement.corporate" ng-value="false" disabled>No</label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
 
 </div>
