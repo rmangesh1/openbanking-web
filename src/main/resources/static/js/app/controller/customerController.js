@@ -1,23 +1,33 @@
 openBankingApp.controller('customerController', ['$scope' , 'customerService', function($scope, customerService) {
     $scope.customerId="";
-    //$scope.customer = null;
 
     $scope.engagementOptions = ['DEPOSIT', 'CREDITCARD', 'MORTGAGE'];
     $scope.customerTypeOptions = ['PERSON', 'COMPANY'];
 
     $scope.getCustomer = function () {
         customerService.getCustomer($scope.customerId).then(function(response) {
+            $scope.apiError = null;
             $scope.customer = response;
-            console.log($scope.customer);
+
+        }, function(error) {
+            $scope.customer = null;
+            $scope.apiError = error;
         });
-    }
+    };
 
     $scope.patchCustomer = function() {
         var customerPatch = {email : $scope.customer.email, phone: $scope.customer.phone};
         customerService.patchCustomer($scope.customerId, customerPatch)
             .then(function(response) {
-                console.log('patch response');
-               console.log(response);
+                $scope.apiError = null;
+                $scope.patched = true;
+            }, function(error) {
+                $scope.apiError = error;
+                $scope.patched = false;
             });
+    };
+
+    $scope.dismissSuccess = function () {
+        $scope.patched = false;
     }
 }]);

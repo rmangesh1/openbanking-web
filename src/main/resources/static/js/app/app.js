@@ -1,4 +1,4 @@
-var openBankingApp = angular.module('openBankingApp',['ngRoute']);
+var openBankingApp = angular.module('openBankingApp',['ngRoute','ngMessages']);
 
 openBankingApp.config(['$routeProvider', function($routeProvider){
     $routeProvider

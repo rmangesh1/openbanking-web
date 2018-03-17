@@ -1,20 +1,25 @@
-<div class="form-group">
-    <label class="col-md-2 control-label">Customer ID</label>
-    <div class="col-md-3 inputGroupContainer">
-        <input type="text" class="form-control" ng-model="customerId"/>
+<div ng-include src="'view/api-error.html'"></div>
 
+<form ng-submit="getCustomer()">
+    <div class="form-group">
+        <label class="col-md-2 control-label">Customer ID</label>
+        <div class="col-md-3 inputGroupContainer">
+            <input type="text" class="form-control" ng-model="customerId"/>
+
+        </div>
+        <button type="submit" class="btn btn-primary" >Search</button>
     </div>
-    <button class="btn btn-primary" ng-click="getCustomer()">Search</button>
-</div>
+</form>
 
 <br/>
 
 <div ng-hide="customer == null">
+    <form name="customerForm" novalidate>
 <table class="table table-striped">
     <tbody>
     <tr>
         <td colspan="1">
-            <form class="well form-horizontal">
+            <div class="well form-horizontal">
                 <fieldset>
                     <div class="form-group">
                         <label class="col-md-4 control-label">First Name</label>
@@ -73,14 +78,21 @@
                             </div>
                         </div>
                     </div>-->
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{'has-error': customerForm.email.$dirty && customerForm.email.$invalid}">
                         <label class="col-md-4 control-label">Email</label>
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input id="email" name="email" placeholder="Email" class="form-control" required="true" value="" ng-model="customer.email" type="text">
+                                <input id="email" name="email" placeholder="Email" class="form-control" required="true" value="" ng-model="customer.email" type="email">
+                            </div>
+                            <div class="input-group validation">
+                                <div class="help-block" ng-messages="customerForm.email.$error" ng-if="customerForm.email.$dirty">
+                                    <span ng-message="email">Please enter a valid email.</span>
+                                    <div ng-messages-include="view/validation-messages.html"></div>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Country of birth</label>
@@ -101,10 +113,10 @@
                         </div>
                     </div>
                 </fieldset>
-            </form>
+            </div>
         </td>
         <td colspan="1">
-            <form class="well form-horizontal">
+            <div class="well form-horizontal">
                 <fieldset>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Last Name</label>
@@ -154,12 +166,18 @@
 
 
 
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{'has-error' : customerForm.phoneNumber.$dirty && customerForm.phoneNumber.$invalid}">
                         <label class="col-md-4 control-label">Phone Number</label>
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                <input id="phoneNumber" name="phoneNumber" placeholder="Phone Number" class="form-control" required="true" ng-model="customer.phone" value="" type="text">
+                                <input id="phoneNumber" name="phoneNumber" placeholder="Phone Number" class="form-control" required="true" ng-model="customer.phone" value="" ng-pattern="/^\+?[1-9]\d{1,14}$/" type="text">
+                            </div>
+                            <div class="input-group validation">
+                                <div class="help-block" ng-messages="customerForm.phoneNumber.$error" ng-if="customerForm.phoneNumber.$dirty">
+                                    <span ng-message="pattern">Please enter a valid phone number.</span>
+                                    <div ng-messages-include="view/validation-messages.html"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -173,22 +191,28 @@
                         </div>
                     </div>
                     <div class="align-button">
-                        <button class="btn btn-primary pull-right" ng-click="patchCustomer()">Update</button>
+                        <button ng-disabled="customerForm.$invalid || customerForm.$pristine" class="btn btn-primary pull-right" ng-click="patchCustomer()">Update</button>
+                        <div ng-show="patched == true">
+                            <div class="col-md-8 alert alert-success alert-dismissible" >
+                                <a class="close" ng-click="dismissSuccess()" aria-label="close">&times;</a>
+                                Updated Customer!
+                            </div>
+                        </div>
                     </div>
                 </fieldset>
-            </form>
+            </div>
         </td>
     </tr>
     </tbody>
 </table>
-
+    </form>
 
     <h4>Customer engagements</h4>
     <table ng-repeat="engagement in customer.customerEngagements" class="table table-striped">
         <tbody>
         <tr>
             <td colspan="1">
-                <form class="well form-horizontal">
+                <div class="well form-horizontal">
                     <fieldset>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Engagement Type</label>
@@ -207,10 +231,10 @@
                             </div>
                         </div>
                     </fieldset>
-                </form>
+                </div>
             </td>
             <td colspan="1">
-                <form class="well form-horizontal">
+                <div class="well form-horizontal">
                     <fieldset>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Account Number</label>
@@ -224,13 +248,13 @@
                             <label class="col-md-4 control-label">Is corporate?</label>
                             <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group">
-                                    <label class="radio-inline"><input type="radio" name="corporate" ng-model="engagement.corporate" ng-value="true" disabled>Yes</label>
-                                    <label class="radio-inline"><input type="radio" name="corporate" ng-model="engagement.corporate" ng-value="false" disabled>No</label>
+                                    <label class="radio-inline"><input type="radio" name="corporate_{{$index}}" ng-model="engagement.corporate" ng-value="true" disabled>Yes</label>
+                                    <label class="radio-inline"><input type="radio" name="corporate_{{$index}}" ng-model="engagement.corporate" ng-value="false" disabled>No</label>
                                 </div>
                             </div>
                         </div>
                     </fieldset>
-                </form>
+                </div>
             </td>
         </tr>
         </tbody>

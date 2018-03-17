@@ -6,18 +6,12 @@ openBankingApp.service('customerService', ['$http', function($http) {
             console.log('success');
             console.log(response);
             return response.data;
-        }, function(response) {
-            console.log('error');
-            console.log(response);
         });
     },
         patchCustomer: function(customerId, customerPatch) {
             return $http.patch('customers/'+ customerId, customerPatch)
                 .then(function(response) {
                     return response.data;
-                }, function(response) {
-                    console.log('error');
-                    console.log(response);
                 })
         }
 };
