@@ -33,7 +33,7 @@
                         <label class="col-md-4 control-label">First Name</label>
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input id="firstName" name="firstName" placeholder="First Name" ng-model="customer.firstName" class="form-control" required="true" value="" type="text" readonly>
+                                <input id="firstName" name="firstName" placeholder="First Name" ng-model="customer.firstName" class="form-control" value="" type="text" readonly>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,6 @@
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                <!--<input id="customerType" name="customerType" placeholder="Customer Type" class="form-control" required="true" ng-model="customer.customerType" value="" type="text" readonly>-->
                                 <select class="form-control" id="customerType" name="customerType" ng-options="option as option for option in customerTypeOptions" disabled ng-model="customer.customerType"></select>
                             </div>
                         </div>
@@ -52,7 +51,7 @@
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                <input id="addressLine1" name="addressLine1" placeholder="Address Line 1" class="form-control" required="true" ng-model="customer.address.postalAddressLine1" value="" type="text" readonly>
+                                <input id="addressLine1" name="addressLine1" placeholder="Address Line 1" class="form-control" ng-model="customer.address.postalAddressLine1" value="" type="text" readonly>
                             </div>
                         </div>
                     </div>
@@ -61,7 +60,7 @@
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                <input id="addressLine3" name="addressLine3" placeholder="Address Line 3" class="form-control" required="true" ng-model="customer.address.postalAddressLine3" value="" type="text" readonly>
+                                <input id="addressLine3" name="addressLine3" placeholder="Address Line 3" class="form-control" ng-model="customer.address.postalAddressLine3" value="" type="text" readonly>
                             </div>
                         </div>
                     </div>
@@ -71,21 +70,10 @@
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                <input id="postcode" name="postcode" placeholder="Postal Code/ZIP" class="form-control" required="true" ng-model="customer.address.postCode" value="" type="text" readonly>
+                                <input id="postcode" name="postcode" placeholder="Postal Code/ZIP" class="form-control" ng-model="customer.address.postCode" value="" type="text" readonly>
                             </div>
                         </div>
                     </div>
-                    <!--<div class="form-group">
-                        <label class="col-md-4 control-label">Country</label>
-                        <div class="col-md-8 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
-                                <select class="selectpicker form-control">
-                                    <option>A really long option to push the menu over the edget</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>-->
                     <div class="form-group" ng-class="{'has-error': customerForm.email.$dirty && customerForm.email.$invalid}">
                         <label class="col-md-4 control-label">Email</label>
                         <div class="col-md-8 inputGroupContainer">
@@ -107,7 +95,7 @@
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-                                <input id="countryOfBirth" name="countryOfBirth" placeholder="Country of birth" class="form-control" required="true" ng-model="customer.countryOfBirth" value="" type="text" readonly>
+                                <input id="countryOfBirth" name="countryOfBirth" placeholder="Country of birth" class="form-control" ng-model="customer.countryOfBirth" value="" type="text" readonly>
                             </div>
                         </div>
                     </div>
@@ -116,7 +104,7 @@
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-                                <input id="countryTax" name="countryTax" placeholder="Country tax" class="form-control" required="true" ng-model="customer.countryTax" value="" type="text" readonly>
+                                <input id="countryTax" name="countryTax" placeholder="Country tax" class="form-control" ng-model="customer.countryTax" value="" type="text" readonly>
                             </div>
                         </div>
                     </div>
@@ -131,7 +119,7 @@
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input id="lastName" name="lastName" placeholder="Last Name" class="form-control" required="true" ng-model="customer.lastName" value="" type="text" readonly>
+                                <input id="lastName" name="lastName" placeholder="Last Name" class="form-control" ng-model="customer.lastName" value="" type="text" readonly>
                             </div>
                         </div>
                     </div>
@@ -140,7 +128,7 @@
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                <input id="companyName" name="companyName" placeholder="Company Name" class="form-control" required="true" ng-model="customer.companyName" value="" type="text" readonly>
+                                <input id="companyName" name="companyName" placeholder="Company Name" class="form-control" ng-model="customer.companyName" value="" type="text" readonly>
                             </div>
                         </div>
                     </div>
@@ -149,7 +137,7 @@
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                <input id="addressLine2" name="addressLine2" placeholder="Address Line 2" class="form-control" required="true" ng-model="customer.address.postalAddressLine2" value="" type="text" readonly>
+                                <input id="addressLine2" name="addressLine2" placeholder="Address Line 2" class="form-control" ng-model="customer.address.postalAddressLine2" value="" type="text" readonly>
                             </div>
                         </div>
                     </div>
@@ -158,7 +146,7 @@
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                <input id="city" name="city" placeholder="City" class="form-control" required="true" ng-model="customer.address.postCity" value="" type="text" readonly>
+                                <input id="city" name="city" placeholder="City" class="form-control" ng-model="customer.address.postCity" value="" type="text" readonly>
                             </div>
                         </div>
                     </div>
@@ -167,7 +155,7 @@
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                <input id="country" name="country" placeholder="Country" class="form-control" required="true" value="" ng-model="customer.address.postCountry" type="text" readonly>
+                                <input id="country" name="country" placeholder="Country" class="form-control" value="" ng-model="customer.address.postCountry" type="text" readonly>
                             </div>
                         </div>
                     </div>
@@ -194,7 +182,7 @@
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-                                <input id="countryCitizenship" name="countryCitizenship" placeholder="Country citizenship" class="form-control" required="true" ng-model="customer.countryCitizenship" value="" type="text" readonly>
+                                <input id="countryCitizenship" name="countryCitizenship" placeholder="Country citizenship" class="form-control" ng-model="customer.countryCitizenship" value="" type="text" readonly>
                             </div>
                         </div>
                     </div>
@@ -234,7 +222,7 @@
                             <label class="col-md-4 control-label">Friendly name</label>
                             <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
-                                    <input id="friendlyName" name="friendlyName" placeholder="First Name" ng-model="engagement.friendlyName" class="form-control" required="true" value="" type="text" readonly>
+                                    <input id="friendlyName" name="friendlyName" placeholder="First Name" ng-model="engagement.friendlyName" class="form-control" value="" type="text" readonly>
                                 </div>
                             </div>
                         </div>
