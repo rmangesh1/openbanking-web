@@ -1,13 +1,21 @@
 <div ng-include src="'view/api-error.html'"></div>
 
-<form ng-submit="getCustomer()">
-    <div class="form-group">
+<form name="customerSearchForm" ng-submit="getCustomer()">
+    <div class="form-group" ng-class="{'has-error': customerSearchForm.customerId.$dirty && customerSearchForm.customerId.$invalid}">
         <label class="col-md-2 control-label">Customer ID</label>
         <div class="col-md-3 inputGroupContainer">
-            <input type="text" class="form-control" ng-model="customerId"/>
+            <input type="text" class="form-control" required ng-model="customerId" id="customerId" name="customerId" ng-pattern="/^\d{9,11}$/"/>
+
 
         </div>
-        <button type="submit" class="btn btn-primary" >Search</button>
+        <button ng-disabled="customerSearchForm.$invalid || customerSearchForm.$pristine" type="submit" class="btn btn-primary" >Search</button>
+        <div class="input-group validation padding-left-185">
+            <div class="help-block" ng-messages="customerSearchForm.customerId.$error" ng-if="customerSearchForm.customerId.$dirty">
+                <span ng-message="pattern">Please enter a valid Customer ID.</span>
+                <div ng-messages-include="view/validation-messages.html"></div>
+            </div>
+        </div>
+
     </div>
 </form>
 
