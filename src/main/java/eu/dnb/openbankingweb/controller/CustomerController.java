@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Created by rmang on 12-03-2018.
+ * Created by rmang on 17-03-2018.
  */
 @RestController
 @RequestMapping("/customers")

@@ -3,8 +3,6 @@ openBankingApp.service('customerService', ['$http', function($http) {
         getCustomer: function (customerId) {
         return $http.get('customers/'+ customerId)
             .then(function(response) {
-            console.log('success');
-            console.log(response);
             return response.data;
         });
     },

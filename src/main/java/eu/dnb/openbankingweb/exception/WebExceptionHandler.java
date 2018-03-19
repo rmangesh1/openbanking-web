@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.io.IOException;
 
 /**
- * Created by rmang on 12-03-2018.
+ * Created by rmang on 17-03-2018.
  */
 @ControllerAdvice
 public class WebExceptionHandler extends ResponseEntityExceptionHandler{

@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Created by mrana on 19.03.2018.
+ * Created by rmang on 19-03-2018.
  */
 public class CustomerControllerTest {
 
