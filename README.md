@@ -1,12 +1,12 @@
-# Project Title
+# Project: Openbanking Web
 
 Openbanking web module. This is the frontend.
 
-##Information
+## Information
 
 UI for customer resource, to fetch and update customer data.
 
-###Installing steps
+### Installing steps
 ```
 1.Checkout the project
 2.cd .. to openbanking-web
@@ -17,12 +17,11 @@ Access the application at,
 http://localhost:9001/openbanking-web/
 ```
 
-###Hosted On-AWS
+### Hosted On-AWS
 ```
 The application is hosted on AWS Elastic beanstalk at,   
 http://openbanking-web.us-east-2.elasticbeanstalk.com/
 ```
 
-##Author
-
+## Author
 Mangesh Rananavare
